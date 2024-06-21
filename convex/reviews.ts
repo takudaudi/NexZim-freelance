@@ -107,9 +107,9 @@ export const getBySellerName = query({
             .withIndex("by_sellerId", (q) => q.eq("sellerId", seller._id))
             .collect();
 
-        // if (!reviews) {
-        //     throw new Error("Reviews not found");
-        // }
+        if (!reviews) {
+            throw new Error("Reviews not found");
+        }
 
         // for each review, get the order
         const reviewsFullType = await Promise.all(reviews.map(async (review) => {
